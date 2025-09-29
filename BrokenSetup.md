@@ -1,1 +1,1 @@
-Describe the problem in detail of the root cause of the setup.sh not successfully running and what was done to fix the problem as a prompt in markdown format to provide to GPT 5 to create and apply a patch to fix and prevent this from happening again. W7QcY531V97IL8280nLf16XNkY7zSn3VWBNv 
+Describe the problem in detail of the root cause of the setup.sh not successfully running and what was done to fix the problem as a prompt in markdown format to provide to GPT 5 to create and apply a patch to fix and prevent this from happening again.
