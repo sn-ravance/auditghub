@@ -1570,13 +1570,11 @@ After adding this line, save the file and then we'll try running the seed script
 
 Feedback submitted
 
-
 Yes
 
 I'll help you verify the .env file and run the seed script again. First, let's check if the JWT secret has been properly set:
 
 ~/…/GitHub/auditgh$ grep -i JWT_SECRET .env
-
 
 POSTGREST_JWT_SECRET=dev-not-for-prod
 Exit Code 0
@@ -1584,11 +1582,9 @@ I noticed that the JWT secret is still set to the default value dev-not-for-prod
 
 ~/…/GitHub/auditgh$ sed -i '' 's/^POSTGREST_JWT_SECRET=.*/POSTGREST_JWT_SECRET=dI8RSO6YrYJZ88ytUeq3nXjUBmUwUkyM/' .env
 
-
 Let's verify the update:
 
 ~/…/GitHub/auditgh$ grep -i JWT_SECRET .env
-
 
 POSTGREST_JWT_SECRET=dI8RSO6YrYJZ88ytUeq3nXjUBmUwUkyM
 Exit Code 0
@@ -1596,12 +1592,16 @@ Perfect! The JWT secret has been updated. Now, let's clean up any existing conta
 
 ~/…/GitHub/auditgh$ docker-compose -f docker-compose.portal.yml down
 
-
 Let's run the seed script again: ~/…/GitHub/auditgh$ ./seed_org.sh
-
 
 I see there's an issue with downloading the CodeQL CLI during the Docker build. The error suggests that the download of CodeQL failed. This could be due to a network issue or the specific version (2.18.4) might not be available.
 
 Let's try to build the Docker image again with more verbose output to get more details:
 
 ~/…/GitHub/auditgh$ docker build --no-cache --progress=plain -t auditgh-scanner .
+
+Great! The Docker image has been built successfully. Now, let's try running the seed script again:
+
+~/…/GitHub/auditgh$ docker-compose -f docker-compose.portal.yml down && ./seed_org.sh
+
+
